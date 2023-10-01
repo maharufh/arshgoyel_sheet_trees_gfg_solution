@@ -1,0 +1,16 @@
+Node *help(int post[],int start,int end){
+    if(start>end)return NULL;
+    Node *root=new Node(post[end]);
+    int i=start;
+    while( i<=end && post[i]<post[end]){
+        i++;
+    }
+    root->left=help(post,start,i-1);
+    root->right=help(post,i,end-1);
+    return root;
+}
+Node *constructTree (int post[], int size)
+{
+    //code here
+    return help(post,0,size-1);
+}
